@@ -57,8 +57,8 @@ jobs:
 
     # Autobuild attempts to build any compiled languages  (C/C++, C#, Go, or Java).
     # If this step fails, then you should remove it and run the build manually (see below)
-    - name: Autobuild
-      uses: github/codeql-action/autobuild@v2
+    #- name: Autobuild
+    #  uses: github/codeql-action/autobuild@v2
 
     # ℹ️ Command-line programs to run using the OS shell.
     # 📚 See https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idstepsrun
@@ -69,6 +69,26 @@ jobs:
     #- run: |
     #    echo "Run, Build Application using script"
     #    ./location_of_script_within_repo/buildscript.sh
+    - name: Build CWE190_Integer_Overflow__char_fscanf_add_01_bad
+      run: |
+        gcc -o CWE190_Integer_Overflow__char_fscanf_add_01_bad CWE190_Integer_Overflow__char_fscanf_add_01.c
+
+    - name: Build CWE190_Integer_Overflow__char_fscanf_add_01_good
+      run: |
+        gcc -o CWE190_Integer_Overflow__char_fscanf_add_01_good CWE190_Integer_Overflow__char_fscanf_add_01.c
+
+    - name: Build goodG2B
+      run: |
+        gcc -o goodG2B CWE190_Integer_Overflow__char_fscanf_add_01.c
+
+    - name: Build goodB2G
+      run: |
+        gcc -o goodB2G CWE190_Integer_Overflow__char_fscanf_add_01.c
+
+    - name: Build main
+      run: |
+        gcc -o main CWE190_Integer_Overflow__char_fscanf_add_01.c
+
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v2
